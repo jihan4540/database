@@ -121,8 +121,28 @@ SELECT * FROM 성적2;
 
 -- 성적2(이름, 과목, 점수)
 -- 2-1) 각 과목수는 몇 개인지 검색하라(DISTINCT 사용)
+<실행결과>
+과목수
+3
+
+select count(distinct 과목)
+from 성적2;
+
 -- 2-2) 과목별 수강생은 몇 명인지 검색하라(GROUP BY)
+<실행결과>
+수학  4
+국어  1
+영어  3
+
+select 과목, count(*)
+from 성적2; 
+group by 과목;
+
 -- 2-3) 과목별 평균점수를 검색하라(GROUP BY)
+
+select 과목 avg(점수)
+from 성적2;
+group by 과목;
 
 -- 2-4) 과목별 평균점수 75 보다 높은 과목별 평균점수를 검색하라(HAVING)
 
@@ -131,9 +151,18 @@ SELECT * FROM 성적2;
 select 과목, ROUND(AVG(점수))
 from 성적2
 group by 과목;
+having avg(점수) >= 75 ;
 
 --2-5) 점수가 70 이상인 과목이름, 과목 평균점수를 과목의 과목별 평균점수가 75 이상인 것만
 --과목별 평균점수가 높은 순으로 검색하라(ORDER  BY)
+
+select
+from 성적2;
+where 점수 >= 70
+group by 과목
+having avg(점수) >=75
+order by avg(점수) desc;
+
 -----------------------------------------
 [Quiz 1] fruit
 [Quiz 2] 고객
